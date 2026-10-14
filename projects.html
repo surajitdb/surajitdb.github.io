@@ -1,0 +1,188 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Projects | Surajit Deb Barma</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<meta name="description" content="Current research projects and software by Dr Surajit Deb Barma: flood susceptibility mapping, conformal prediction for streamflow and groundwater, and GeoAI systems.">
+<link rel="canonical" href="https://surajitdb.github.io/projects.html">
+<link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,500;0,6..72,600;1,6..72,400&amp;family=Source+Sans+3:ital,wght@0,400;0,600;1,400&amp;display=swap">
+<script defer src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/js/brands.min.js"></script>
+<script defer src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/js/fontawesome.min.js"></script>
+<link rel="stylesheet" href="assets/style.css">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="site-header">
+  <div class="wrap">
+    <a class="brand" href="index.html"><svg class="brand-mark" viewBox="0 0 28 28" aria-hidden="true"><circle cx="14" cy="14" r="13" fill="var(--accent)"/><path d="M5 17c3-1 4-7 8-7s4 6 7 6 3-3 4-4" fill="none" stroke="var(--accent-ink)" stroke-width="2.2" stroke-linecap="round"/></svg>Surajit Deb Barma</a>
+    <nav class="site-nav" aria-label="Main">
+      <ul>
+        <li><a href="index.html">About</a></li>
+        <li><a href="publications.html">Publications</a></li>
+        <li><a href="projects.html" aria-current="page">Projects</a></li>
+        <li><a href="teaching.html">Teaching</a></li>
+        <li><a href="cv.html">CV</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<main id="main">
+  <div class="page-band">
+    <canvas class="contours" data-seed="37" data-fade="0.5" aria-hidden="true"></canvas>
+    <div class="wrap page-head">
+      <h1>Projects</h1>
+      <p>Current research and the software behind it. Each entry states the problem, the approach and where the work stands.</p>
+    </div>
+  </div>
+
+  <div class="wrap">
+    <section class="project-group" aria-labelledby="flood">
+      <div class="group-label">
+        <h2 id="flood">Flood risk</h2>
+        <p>Where floods are likely, and how far to trust the map.</p>
+      </div>
+      <div class="project-list">
+        <article class="project" id="paschim-fsm">
+          <div class="project-head">
+            <h3>PASCHIM-FSM</h3>
+            <span class="status">Manuscript in preparation</span>
+          </div>
+          <dl class="pab">
+            <dt>Problem</dt>
+            <dd>Flood susceptibility maps for India's west coast rarely say how confident they are, which limits their use in planning.</dd>
+            <dt>Approach</dt>
+            <dd>A Google Earth Engine pipeline with Random Forest, comparing four uncertainty methods: Bernoulli variance, margin confidence, bootstrap Random Forest variance and inductive conformal prediction.</dd>
+            <dt>Result</dt>
+            <dd>AUC 0.92 on Dakshina Kannada, with runs extended to other coastal districts including Udupi.</dd>
+          </dl>
+          <ul class="tags" aria-label="Methods and tools">
+            <li>Google Earth Engine</li><li>Random Forest</li><li>Conformal prediction</li><li>Remote sensing</li>
+          </ul>
+        </article>
+
+        <article class="project" id="fsm-transfer">
+          <div class="project-head">
+            <h3>Cross-region transferability of flood maps</h3>
+            <span class="status">In progress</span>
+          </div>
+          <dl class="pab">
+            <dt>Problem</dt>
+            <dd>A susceptibility model trained in one district is often applied in another without checking whether it still works there.</dd>
+            <dt>Approach</dt>
+            <dd>Train and test across two contrasting districts, coastal Udupi and semi-arid Raichur, and measure whether the uncertainty intervals keep their stated coverage after the move.</dd>
+          </dl>
+          <ul class="tags" aria-label="Methods and tools">
+            <li>Spatial transferability</li><li>Coverage analysis</li><li>Google Earth Engine</li>
+          </ul>
+        </article>
+      </div>
+    </section>
+
+    <section class="project-group" aria-labelledby="forecasting">
+      <div class="group-label">
+        <h2 id="forecasting">Forecasting with uncertainty</h2>
+        <p>Intervals that keep their coverage when the monsoon shifts.</p>
+      </div>
+      <div class="project-list">
+        <article class="project" id="monsoon-streamflow">
+          <div class="project-head">
+            <h3>Monsoon streamflow intervals</h3>
+            <span class="status">In progress</span>
+          </div>
+          <dl class="pab">
+            <dt>Problem</dt>
+            <dd>Monsoon streamflow shifts regime abruptly at onset and withdrawal, which breaks the assumptions behind standard prediction intervals.</dd>
+            <dt>Approach</dt>
+            <dd>Apply change-point-aware conformal prediction (CPTC; Sun and Yu, NeurIPS 2025) to daily streamflow of the Netravathi River at Bantwal.</dd>
+          </dl>
+          <ul class="tags" aria-label="Methods and tools">
+            <li>Conformal prediction</li><li>Change-point detection</li><li>Streamflow</li>
+          </ul>
+        </article>
+
+        <article class="project" id="xlstm-groundwater">
+          <div class="project-head">
+            <h3>xLSTM for long-horizon groundwater forecasting</h3>
+            <span class="status status-proposal">Proposal</span>
+          </div>
+          <dl class="pab">
+            <dt>Problem</dt>
+            <dd>Daily groundwater level forecasts degrade quickly over long horizons, and their error bars are rarely checked.</dd>
+            <dt>Approach</dt>
+            <dd>Compare xLSTM with LSTM, RNN and N-HiTS on more than 20 years of daily records from three wells in different countries, with conformal prediction intervals.</dd>
+          </dl>
+          <ul class="tags" aria-label="Methods and tools">
+            <li>xLSTM</li><li>N-HiTS</li><li>PyTorch</li><li>Conformal prediction</li>
+          </ul>
+        </article>
+      </div>
+    </section>
+
+    <section class="project-group" aria-labelledby="software">
+      <div class="group-label">
+        <h2 id="software">Software and GeoAI</h2>
+        <p>Tools that make these methods reusable.</p>
+      </div>
+      <div class="project-list">
+        <article class="project" id="hydrorisq">
+          <div class="project-head">
+            <h3>HydroRISQ</h3>
+            <span class="status">In development</span>
+          </div>
+          <dl class="pab">
+            <dt>What it is</dt>
+            <dd>A framework for uncertainty-aware geospatial machine learning.</dd>
+          </dl>
+          <ul class="tags" aria-label="Methods and tools">
+            <li>Python</li><li>Uncertainty quantification</li><li>Geospatial ML</li>
+          </ul>
+        </article>
+
+        <article class="project" id="spatial-rag">
+          <div class="project-head">
+            <h3>Spatial-RAG</h3>
+            <span class="status">In progress</span>
+          </div>
+          <dl class="pab">
+            <dt>What it is</dt>
+            <dd>A retrieval-augmented generation system for cartographic questions, built in LangGraph. It combines Spatial-RAG with GeoAI methods for map generalization.</dd>
+          </dl>
+          <ul class="tags" aria-label="Methods and tools">
+            <li>LangGraph</li><li>RAG</li><li>LLM agents</li><li>GeoAI</li>
+          </ul>
+        </article>
+
+        <article class="project" id="pysim">
+          <div class="project-head">
+            <h3>pySim</h3>
+            <span class="status">Built</span>
+          </div>
+          <dl class="pab">
+            <dt>What it is</dt>
+            <dd>A groundwater flow simulator in Python using the finite-difference method.</dd>
+          </dl>
+          <ul class="tags" aria-label="Methods and tools">
+            <li>Python</li><li>Finite differences</li><li>Groundwater</li>
+          </ul>
+        </article>
+      </div>
+    </section>
+  </div>
+</main>
+
+<footer class="site-footer">
+  <div class="wrap">
+    <span>© 2026 Surajit Deb Barma</span>
+    <ul class="social social-sm" aria-label="Profiles"><li><a href="https://orcid.org/0000-0003-0849-3033" title="ORCID" aria-label="ORCID"><i class="fa-brands fa-orcid" aria-hidden="true"></i><span class="social-label">ORCID</span></a></li><li><a href="https://scholar.google.com/citations?user=F-X8XHkAAAAJ" title="Google Scholar" aria-label="Google Scholar"><i class="fa-brands fa-google-scholar" aria-hidden="true"></i><span class="social-label">Google Scholar</span></a></li><li><a href="https://www.researchgate.net/profile/Surajit-Deb-Barma" title="ResearchGate" aria-label="ResearchGate"><i class="fa-brands fa-researchgate" aria-hidden="true"></i><span class="social-label">ResearchGate</span></a></li><li><a href="https://www.linkedin.com/in/surajit-deb-barma-4b1309249/" title="LinkedIn" aria-label="LinkedIn"><i class="fa-brands fa-linkedin-in" aria-hidden="true"></i><span class="social-label">LinkedIn</span></a></li><li><a href="https://github.com/surajitdb" title="GitHub" aria-label="GitHub"><i class="fa-brands fa-github" aria-hidden="true"></i><span class="social-label">GitHub</span></a></li><li><a href="https://x.com/surajitdb" title="X" aria-label="X"><i class="fa-brands fa-x-twitter" aria-hidden="true"></i><span class="social-label">X</span></a></li></ul>
+    <span>Last updated October 2026</span>
+  </div>
+</footer>
+<script src="assets/site.js"></script>
+</body>
+</html>
